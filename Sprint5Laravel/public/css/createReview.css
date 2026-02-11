@@ -1,0 +1,100 @@
+#card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(22px);
+    width: 380px;
+    padding: 40px 35px;
+    border-radius: 26px;
+    margin: 10px auto;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", Arial, sans-serif;
+    color: #f1f5f9;
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 
+        0 25px 45px rgba(0,0,0,0.25),
+        0 8px 20px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(60px);
+    animation: fadeUp 0.9s ease forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#card h3 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #e5e7eb;
+    letter-spacing: 0.6px;
+        justify-content: center;
+
+}
+
+#card input[type="text"],
+#card textarea {
+    width: 100%;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-size: 15px;
+    outline: none;
+    resize: none;
+    transition: all 0.35s ease;
+        justify-content: center;
+
+}
+
+#card textarea {
+    min-height: 120px;
+}
+
+#card input::placeholder,
+#card textarea::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+#card input:focus,
+#card textarea:focus {
+    border-color: #22d3ee;
+    background: rgba(255,255,255,0.12);
+    box-shadow: 0 0 0 4px rgba(34,211,238,0.25);
+}
+
+#card .button {
+    width: 100%;
+    padding: 15px 0;
+    border-radius: 20px;
+    border: none;
+    background: linear-gradient(135deg, #06b6d4, #2563eb);
+    color: #fff;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.35s ease;
+    box-shadow: 0 8px 25px rgba(37,99,235,0.35);
+}
+
+#card .button:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 35px rgba(37,99,235,0.45);
+    background: linear-gradient(135deg, #0284c7, #1e40af);
+}
+
+#card .button:active {
+    transform: scale(0.96);
+}
+
+@media (max-width: 480px) {
+    #card {
+        width: 90%;
+        padding: 30px 24px;
+        margin: 80px auto;
+    }
+}

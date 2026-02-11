@@ -1,0 +1,15 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: linear-gradient(135deg, #008cff, rgb(4, 4, 4), #008cff);
+    overflow-x: hidden;
+    color: #f1f5f9;
+    min-height: 100vh;
+    position: relative;
+}
+
+.logo-nav{
+    height: 100px;
+    width: 100px;
+}
