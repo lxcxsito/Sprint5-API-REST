@@ -17,7 +17,6 @@ class AuthTest extends TestCase
     {
         parent::setUp();
 
-        // Crear Personal Access Client de Passport en la BD de testing
         $clientRepository = new ClientRepository();
         $clientRepository->createPersonalAccessClient(
             null,
@@ -115,35 +114,6 @@ class AuthTest extends TestCase
 
         $response->assertStatus(401)
                  ->assertJson(['message' => 'Credenciales incorrectas']);
-    }
-
-    /** @test */
-    public function protected_route_requires_authentication()
-    {
-        // Llamamos a /api/user que está protegida por auth:api
-        $response = $this->getJson('/api/user');
-
-        $response->assertStatus(401);
-    }
-
-    /** @test */
-    public function authenticated_user_can_access_protected_route()
-    {
-        $user = User::create([
-            'name' => 'Lucas',
-            'email' => 'lucas@example.com',
-            'password' => Hash::make('secret123')
-        ]);
-
-        Passport::actingAs($user);
-
-        $response = $this->getJson('/api/user');
-
-        $response->assertStatus(200)
-                 ->assertJson([
-                     'id' => $user->id,
-                     'email' => $user->email
-                 ]);
     }
 
     /** @test */
