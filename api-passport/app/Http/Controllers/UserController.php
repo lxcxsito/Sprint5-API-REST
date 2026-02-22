@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // Mostrar datos de un usuario por ID
     public function show($id)
     {
         $user = User::find($id);
@@ -20,7 +19,6 @@ class UserController extends Controller
         return response()->json($user);
     }
 
-    // Actualizar datos de un usuario por ID
     public function update(Request $request, $id)
     {
         $user = User::find($id);
@@ -29,7 +27,6 @@ class UserController extends Controller
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
 
-        // Validaciones
         $request->validate([
             'name' => 'sometimes|required|string',
             'email' => 'sometimes|required|email|unique:users,email,' . $user->id,
@@ -45,7 +42,7 @@ class UserController extends Controller
         }
 
         if ($request->has('password')) {
-            $user->password = $request->password; // se hash en el modelo automáticamente
+            $user->password = $request->password;
         }
 
         $user->save();
