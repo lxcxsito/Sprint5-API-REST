@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PurchaseController;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -22,4 +23,12 @@ Route::get('/games/{id}', [GameController::class, 'show']);
 Route::middleware('auth:api')->group(function () {
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::put('/users/{id}', [UserController::class, 'update']);
+
+
+Route::middleware('auth:api')->group(function () {
+Route::post('/purchases/{id}', [PurchaseController::class, 'store']);
+Route::get('/my-games', [PurchaseController::class, 'myGames']);
+Route::get('/purchases', [PurchaseController::class, 'index']); // opcional admin
+
+});
 });
