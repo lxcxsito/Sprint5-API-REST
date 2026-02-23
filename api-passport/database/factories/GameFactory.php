@@ -14,7 +14,7 @@ class GameFactory extends Factory
     {
         return [
             'title' => $this->faker->sentence(3),
-            'description' => $this->faker->paragraph,
+            'description' => $this->faker->text(255),
             'price' => $this->faker->randomFloat(2, 0, 100),
             'urlImage' => $this->faker->imageUrl(640, 480, 'games', true),
             'category_id' => Category::factory(),

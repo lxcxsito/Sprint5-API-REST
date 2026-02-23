@@ -2,21 +2,22 @@
 
 namespace Database\Factories;
 
-use App\Models\Purchase;
+use App\Models\Review;
 use App\Models\User;
 use App\Models\Game;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class PurchaseFactory extends Factory
+class ReviewFactory extends Factory
 {
-    protected $model = Purchase::class;
+    protected $model = Review::class;
 
     public function definition()
     {
         return [
             'user_id' => User::factory(),
             'game_id' => Game::factory(),
-            'purchase_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
+            'rating' => $this->faker->numberBetween(1, 5),
+            'comment' => $this->faker->sentence(),
         ];
     }
 }
