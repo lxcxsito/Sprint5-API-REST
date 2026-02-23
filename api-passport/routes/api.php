@@ -24,6 +24,14 @@ Route::get('/games/{id}', [GameController::class, 'show']);
 Route::middleware('auth:api')->group(function () {
     Route::get('/users/{id}', [UserController::class, 'show']);
     Route::put('/users/{id}', [UserController::class, 'update']);
+
+
+Route::middleware('auth:api')->group(function () {
+Route::post('/purchases/{id}', [PurchaseController::class, 'store']);
+Route::get('/my-games', [PurchaseController::class, 'myGames']);
+Route::get('/purchases', [PurchaseController::class, 'index']); // opcional admin
+
+});
 });
 
 Route::middleware(['auth:api', 'admin'])->group(function () {
