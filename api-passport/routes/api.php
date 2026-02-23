@@ -7,6 +7,7 @@ use App\Http\Controllers\GameController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PurchaseController;
 
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -31,4 +32,13 @@ Route::get('/my-games', [PurchaseController::class, 'myGames']);
 Route::get('/purchases', [PurchaseController::class, 'index']); // opcional admin
 
 });
+});
+
+Route::middleware(['auth:api', 'admin'])->group(function () {
+
+    Route::post('/games', [GameController::class, 'store']);
+    Route::put('/games/{id}', [GameController::class, 'update']);
+    Route::delete('/games/{id}', [GameController::class, 'destroy']);
+
+    Route::get('/purchases', [PurchaseController::class, 'index']);
 });
