@@ -16,6 +16,10 @@ class UserController extends Controller
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
 
+        if (auth()->id() != $id) {
+            return response()->json(['message' => 'No autorizado'], 403);
+        }
+
         return response()->json($user);
     }
 
@@ -27,10 +31,14 @@ class UserController extends Controller
             return response()->json(['message' => 'Usuario no encontrado'], 404);
         }
 
+        if (auth()->id() != $id) {
+            return response()->json(['message' => 'No autorizado'], 403);
+        }
+
         $request->validate([
             'name' => 'sometimes|required|string',
             'email' => 'sometimes|required|email|unique:users,email,' . $user->id,
-            'password' => 'sometimes|required|min:6'
+            'password' => ['sometimes', 'required', 'min:8']
         ]);
 
         if ($request->has('name')) {
@@ -42,7 +50,7 @@ class UserController extends Controller
         }
 
         if ($request->has('password')) {
-            $user->password = $request->password;
+            $user->password = Hash::make($request->password);
         }
 
         $user->save();

@@ -49,7 +49,7 @@ class UserTest extends TestCase
     {
         $user = User::create([
             'name' => 'Lucas',
-            'email' => 'lucas@example.com',
+            'email' => 'lucas334@example.com',
             'password' => Hash::make('secret123')
         ]);
 
@@ -94,8 +94,8 @@ class UserTest extends TestCase
     public function updating_nonexistent_user_returns_404()
     {
         $user = User::create([
-            'name' => 'Lucas',
-            'email' => 'lucas@example.com',
+            'name' => 'Lucaserwer',
+            'email' => 'lucasrfege@example.com',
             'password' => Hash::make('secret123')
         ]);
 
